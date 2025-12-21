@@ -3,7 +3,7 @@ module Face where
 import AlgebraicNum.AlgReal
 import Point
 
-data Face = Face {points :: [Point]}
+data Face = Face {points :: [Point]} deriving (Show)
 
 isSamePlainFaces :: Point -> Point -> Point -> [Point] -> Bool
 isSamePlainFaces _ _ _ [] = True

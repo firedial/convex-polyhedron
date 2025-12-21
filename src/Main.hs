@@ -4,6 +4,7 @@ import Triangle
 import Point
 import Face
 import Polyhedron
+import ConvexPolyhedron
 
 {-
 整面凸多面体であるということ
@@ -44,4 +45,7 @@ main :: IO ()
 -- main = print $ (tan11_25 - sin11_25 / cos11_25)
 -- main = print $ isSamePlain (Point sin15 cos30 43) (Point sin30 cos15 34) (Point sin11_25 cos15 2) (Point sin15 cos9 3)
 -- main = print $ isSamePlain (Point 1 1 1) (Point 2 2 2) (Point 3 3 3) (Point 4 4 4)
-main = print $ isRegularFace $ Face [(Point 0 0 0), (Point 0 0 1), (Point 0 1 1), (Point 0 1 0)]
+-- main = print $ isRegularFace $ Face [(Point 0 0 0), (Point 0 0 1), (Point 0 1 1), (Point 0 1 0)]
+main = print $ isConvexPolyhedron r1
+-- main = print $ pfaces r1
+

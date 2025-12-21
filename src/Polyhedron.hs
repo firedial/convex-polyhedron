@@ -9,13 +9,21 @@ data Polyhedron = Polyhedron {ppoints :: [Point], pfaces :: [Face]}
 isSamePlainList :: [Point] -> Bool
 isSamePlainList (p1:p2:p3:p4:_) = isSamePlain p1 p2 p3 p4
 
--- isConvexPolyhedron :: Polyhedron -> Bool
--- isConvexPolyhedron ph
---     = length ps >= 4
---     && (and (filter (\p -> isSamePlainList p) (comb 4 ps)))
---     where
---         ps = ppoints ph
---         fs = pfaces ph
+hasPoint :: [Face] -> [Point] -> Bool
+hasPoint faces [] = True
+hasPoint faces (p:ps) = if isContained then hasPoint faces ps else False
+    where
+        isContained = or (map (\f -> elem p (points f)) faces)
+
+isConvexPolyhedron :: Polyhedron -> Bool
+isConvexPolyhedron ph
+    = length ps >= 4
+    && and (map (\f -> isRegularFace f) fs)
+    && hasPoint fs ps
+    -- && (and (map (\p -> isSamePlainList p) (comb 4 ps)))
+    where
+        ps = ppoints ph
+        fs = pfaces ph
 
 comb :: Int -> [a] -> [[a]]
 comb 0 xs = [[]]

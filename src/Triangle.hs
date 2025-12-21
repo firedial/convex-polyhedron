@@ -3,6 +3,13 @@ module Triangle where
 import AlgebraicNum.AlgReal
 import AlgUtil
 
+sin0 :: AlgReal
+sin0 = 0
+cos0 :: AlgReal
+cos0 = 1
+tan0 :: AlgReal
+tan0 = 0
+
 sin11_25 :: AlgReal
 sin11_25 = toLoad [1,0,-32,0,160,0,-256,0,128] 5
 cos11_25 :: AlgReal
@@ -44,3 +51,24 @@ cos30 :: AlgReal
 cos30 = toLoad [-3,0,4] 1
 tan30 :: AlgReal
 tan30 = sin30 / cos30
+
+sin60 :: AlgReal
+sin60 = cos30
+cos60 :: AlgReal
+cos60 = sin30
+tan60 :: AlgReal
+tan60 = sin60 / cos60
+
+sin120 :: AlgReal
+sin120 = sin60
+cos120 :: AlgReal
+cos120 = -1 * cos60
+tan120 :: AlgReal
+tan120 = sin120 / cos120
+
+sin240 :: AlgReal
+sin240 = -1 * sin120
+cos240 :: AlgReal
+cos240 = cos120
+tan240 :: AlgReal
+tan240 = sin240 / cos240
