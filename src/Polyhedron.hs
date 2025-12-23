@@ -53,12 +53,6 @@ isConvexPolyhedron ph
     && hasPoint fs ps
     && isTwoEdge [] [] (getEdges fs)
     && isConvex ps fs
-    -- && (and (map (\p -> isSamePlainList p) (comb 4 ps)))
     where
         ps = ppoints ph
         fs = pfaces ph
-
-comb :: Int -> [a] -> [[a]]
-comb 0 xs = [[]]
-comb _ [] = []
-comb n (x:xs) = [x:y | y <- comb (n-1) xs] ++ comb n xs
