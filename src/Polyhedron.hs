@@ -30,12 +30,29 @@ isTwoEdge f s (p:ps)
     | (not (elem p s)) && (not (elem (snd p, fst p) s)) = isTwoEdge f (p : s) ps
     | otherwise = False
 
+isConvexOnFace :: Int -> [Point] -> Face -> Bool
+isConvexOnFace _ [] _ = True
+isConvexOnFace s (p:ps) f =
+    if elem p (points f) then isConvexOnFace s ps f -- 正多角形の頂点
+    else if sgn == 0 then False -- 正多角形と同じ平面の点
+    else if s == 0 then isConvexOnFace sgn ps f -- 左手系か右手系か定まっていない場合
+    else if s /= sgn then False -- 左手系と右手系が混じっている場合
+    else isConvexOnFace s ps f
+    where
+        (p1:p2:p3:_) = points f
+        sgn = orient p p1 p2 p3
+
+isConvex :: [Point] -> [Face] -> Bool
+isConvex _ [] = True
+isConvex p (f:fs) = if isConvexOnFace 0 p f then isConvex p fs else False
+
 isConvexPolyhedron :: Polyhedron -> Bool
 isConvexPolyhedron ph
     = length ps >= 4
     && and (map (\f -> isRegularFace f) fs)
     && hasPoint fs ps
     && isTwoEdge [] [] (getEdges fs)
+    && isConvex ps fs
     -- && (and (map (\p -> isSamePlainList p) (comb 4 ps)))
     where
         ps = ppoints ph

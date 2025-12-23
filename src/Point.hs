@@ -25,6 +25,11 @@ distance2 p1 p2 = norm2 (p2 - p1)
 det :: Point -> Point -> Point -> AlgReal
 det v1 v2 v3 = (x v1) * (y v2) * (z v3) + (y v1) * (z v2) * (x v3) + (z v1) * (x v2) * (y v3) - (z v1) * (y v2) * (x v3) - (y v1) * (x v2) * (z v3) - (x v1) * (z v2) * (y v3)
 
+orient :: Point -> Point -> Point -> Point -> Int
+orient p1 p2 p3 p4 = if d > 0 then 1 else if d < 0 then -1 else 0
+    where
+        d = det (p2 - p1) (p3 - p1) (p4 - p1)
+
 isSamePlain :: Point -> Point -> Point -> Point -> Bool
 isSamePlain p1 p2 p3 p4 = (det (p2 - p1) (p3 - p1) (p4 - p1)) == 0
 
