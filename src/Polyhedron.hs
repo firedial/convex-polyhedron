@@ -52,7 +52,7 @@ isConvexPolyhedron ph
     && and (map (\f -> isRegularFace f) fs)
     && hasPoint fs ps
     && isTwoEdge [] [] (getEdges fs)
-    && isConvex ps fs
+    && isConvex ((Point 0 0 0) : ps) fs -- 原点を含んでいるかも判定する
     where
         ps = ppoints ph
         fs = pfaces ph
