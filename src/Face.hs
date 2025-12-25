@@ -2,6 +2,7 @@ module Face where
 
 import AlgebraicNum.AlgReal
 import Point
+import Triangle
 
 data Face = Face {points :: [Point]} deriving (Show)
 
@@ -39,3 +40,17 @@ isRegularFace f
         (pa1:pa2:pas) = ps
         anglen = cosAngle pan1 pan pa1
         angle1 = cosAngle pan pa1 pa2
+
+getRegularArea :: Face -> AlgReal
+getRegularArea f =
+    if n == 3 then (3 * d2) / (4 * tan60)
+    else if n == 4 then (4 * d2) / (4 * tan45)
+    else if n == 5 then (5 * d2) / (4 * tan36)
+    else if n == 6 then (6 * d2) / (4 * tan30)
+    else if n == 8 then (8 * d2) / (4 * tan22_5)
+    else if n == 10 then (10 * d2) / (4 * tan18)
+    else error "nothing"
+    where
+        n = length $ points f
+        (v1:v2:_) = points f
+        d2 = distance2 v1 v2

@@ -52,6 +52,20 @@ cos30 = toLoad [-3,0,4] 1
 tan30 :: AlgReal
 tan30 = sin30 / cos30
 
+sin36 :: AlgReal
+sin36 = 2 * sin18 * cos18
+cos36 :: AlgReal
+cos36 = 2 * cos18 * cos18 - 1
+tan36 :: AlgReal
+tan36 = sin36 / cos36
+
+sin45 :: AlgReal
+sin45 = toLoad [-1,0,2] 1
+cos45 :: AlgReal
+cos45 = sin45
+tan45 :: AlgReal
+tan45 = sin45 / cos45
+
 sin60 :: AlgReal
 sin60 = cos30
 cos60 :: AlgReal

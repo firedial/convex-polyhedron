@@ -4,7 +4,7 @@ import AlgebraicNum.AlgReal
 import Point
 import Face
 
-data Polyhedron = Polyhedron {ppoints :: [Point], pfaces :: [Face]}
+data Polyhedron = Polyhedron {id :: String, ppoints :: [Point], pfaces :: [Face], rowFace :: [[Int]]}
 
 isSamePlainList :: [Point] -> Bool
 isSamePlainList (p1:p2:p3:p4:_) = isSamePlain p1 p2 p3 p4
@@ -56,3 +56,12 @@ isConvexPolyhedron ph
     where
         ps = ppoints ph
         fs = pfaces ph
+
+getD2 :: Polyhedron -> AlgReal
+getD2 p = distance2 (fst edge) (snd edge)
+    where
+        edge = head $ getEdges $ pfaces p
+
+getAreaFromFaces :: [Face] -> AlgReal
+getAreaFromFaces [] = 0
+getAreaFromFaces (f:fs) = getRegularArea f + getAreaFromFaces fs

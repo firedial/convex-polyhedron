@@ -35,24 +35,55 @@ import qualified Data.ByteString.Lazy.Char8 as BL
 {-
 求めたいもの
 
-* 1辺の長さ
+* 1辺の長さの2乗
 * 頂点数
 * 辺数
 * 面数
 * 表面積
-* 表面積(1辺1)
 * 体積
-* 体積(1辺1)
-* 頂点形状と余角
+* appx 1辺の長さの2乗
+* appx 表面積
+* appx 体積
+* 頂点形状と余角 <- これは最初は求めない
 * 辺形状と2面角 <- これは最初は求めない
 -}
 
 data OutputData = OutputData
-    { a :: [Int]
-    , b :: Int
+    { id :: String
+    , vertexes :: [[[Int]]]
+    , faces :: [[Int]]
+    , d2 :: [Int]
+    , v :: Int
+    , e :: Int
+    , f :: Int
+    , area :: [Int]
+    , volume :: [Int]
+    , appxD2 :: Double
+    , appxArea :: Double
+    , appxVolume :: Double
     } deriving (Generic, Show)
 
 instance ToJSON OutputData
+
+toOutPutData :: Polyhedron -> OutputData
+toOutPutData p = outputData
+    where
+        outputData = OutputData
+            (Polyhedron.id p) -- id
+            (map toIntListFromPoint $ ppoints p) -- vertexes
+            (rowFace p) -- faces
+            (toSave d2) -- d2
+            (length $ ppoints p) -- v
+            ((length $ getEdges $ pfaces p) `div` 2) -- e
+            (length $ rowFace p) -- f
+            (toSave area) -- area
+            (toSave volume) -- volume
+            (toValue d2) -- appxD2
+            (toValue area) -- appxArea
+            (toValue volume) -- appxVolume
+        d2 = getD2 p
+        area = getAreaFromFaces $ pfaces p
+        volume = getVolume $ pfaces p
 
 main :: IO ()
 -- main = print $ (tan11_25 - sin11_25 / cos11_25)
@@ -61,7 +92,8 @@ main :: IO ()
 -- main = print $ isRegularFace $ Face [(Point 0 0 0), (Point 0 0 1), (Point 0 1 1), (Point 0 1 0)]
 -- main = print $ isConvexPolyhedron r1
 -- main = print $ toValue $ volume (pfaces r1)
-main = BL.putStrLn $ encode $ OutputData [1, 3] 6
+-- main = BL.putStrLn $ encode $ OutputData [1, 3] 6
 -- main = print $ toValue 1
 -- main = print $ pfaces r1
 
+main = BL.putStrLn $ encode $ toOutPutData r1

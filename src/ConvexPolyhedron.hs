@@ -13,7 +13,7 @@ transformFaces points vertexes = map (transformFace points) vertexes
         transformFace points vertex = Face $ map (\v -> points !! v) vertex
 
 r1 :: Polyhedron
-r1 = Polyhedron points (transformFaces points vertexes)
+r1 = Polyhedron "r1" points (transformFaces points vertexes) vertexes
     where
         r = toLoad [-9, 0, 8] 1
         h = toLoad [-2, 0, 1] 1

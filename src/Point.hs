@@ -1,6 +1,7 @@
 module Point where
 
 import AlgebraicNum.AlgReal
+import AlgUtil
 
 data Point = Point {x :: AlgReal, y :: AlgReal, z :: AlgReal} deriving (Show, Eq)
 
@@ -42,3 +43,5 @@ cosAngle p1 p2 p3 = (innerProduct v1 v3) / ((norm v1) * (norm v3))
         v1 = p1 - p2
         v3 = p3 - p2
 
+toIntListFromPoint :: Point -> [[Int]]
+toIntListFromPoint p = [toSave $ x p, toSave $ y p , toSave $ z p]
