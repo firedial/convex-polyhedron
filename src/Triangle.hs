@@ -73,6 +73,11 @@ cos60 = sin30
 tan60 :: AlgReal
 tan60 = sin60 / cos60
 
+sin90 :: AlgReal
+sin90 = 1
+cos90 :: AlgReal
+cos90 = 0
+
 sin120 :: AlgReal
 sin120 = sin60
 cos120 :: AlgReal
@@ -80,9 +85,21 @@ cos120 = -1 * cos60
 tan120 :: AlgReal
 tan120 = sin120 / cos120
 
+sin180 :: AlgReal
+sin180 = 0
+cos180 :: AlgReal
+cos180 = -1
+tan180 :: AlgReal
+tan180 = 0
+
 sin240 :: AlgReal
 sin240 = -1 * sin120
 cos240 :: AlgReal
 cos240 = cos120
 tan240 :: AlgReal
 tan240 = sin240 / cos240
+
+sin270 :: AlgReal
+sin270 = -1
+cos270 :: AlgReal
+cos270 = 0
