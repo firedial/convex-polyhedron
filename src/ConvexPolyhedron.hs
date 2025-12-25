@@ -6,6 +6,8 @@ import Point
 import Face
 import Polyhedron
 
+getPolyhedrons :: [Polyhedron]
+getPolyhedrons = [r1]
 
 transformFaces :: [Point] -> [[Int]] -> [Face]
 transformFaces points vertexes = map (transformFace points) vertexes
