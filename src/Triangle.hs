@@ -10,19 +10,19 @@ cos0 = 1
 tan0 :: AlgReal
 tan0 = 0
 
+sin9 :: AlgReal
+sin9 = toLoad [-19,0,32,0,224,0,-512,0,256] 3
+cos9 :: AlgReal
+cos9 = toLoad [-19,0,32,0,224,0,-512,0,256] 4
+tan9 :: AlgReal
+tan9 = sin9 / cos9
+
 sin11_25 :: AlgReal
-sin11_25 = toLoad [1,0,-32,0,160,0,-256,0,128] 5
+sin11_25 = toLoad [1,0,-32,0,160,0,-256,0,128] 4
 cos11_25 :: AlgReal
-cos11_25 = toLoad [1,0,-32,0,160,0,-256,0,128] 6
+cos11_25 = toLoad [1,0,-32,0,160,0,-256,0,128] 7
 tan11_25 :: AlgReal
 tan11_25 = sin11_25 / cos11_25
-
-sin18 :: AlgReal
-sin18 = toLoad [-1,2,4] 1
-cos18 :: AlgReal
-cos18 = toLoad [5,0,-20,0,16] 3
-tan18 :: AlgReal
-tan18 = sin18 / cos18
 
 sin15 :: AlgReal
 sin15 = toLoad [1,0,-16,0,16] 2
@@ -31,12 +31,12 @@ cos15 = toLoad [1,0,-16,0,16] 3
 tan15 :: AlgReal
 tan15 = sin15 / cos15
 
-sin9 :: AlgReal
-sin9 = toLoad [-19,0,32,0,224,0,-512,0,256] 3
-cos9 :: AlgReal
-cos9 = toLoad [-19,0,32,0,224,0,-512,0,256] 4
-tan9 :: AlgReal
-tan9 = sin9 / cos9
+sin18 :: AlgReal
+sin18 = toLoad [-1,2,4] 1
+cos18 :: AlgReal
+cos18 = toLoad [5,0,-20,0,16] 3
+tan18 :: AlgReal
+tan18 = sin18 / cos18
 
 sin22_5 :: AlgReal
 sin22_5 = 2 * sin11_25 * cos11_25
@@ -73,10 +73,24 @@ cos60 = sin30
 tan60 :: AlgReal
 tan60 = sin60 / cos60
 
+sin72 :: AlgReal
+sin72 = cos18
+cos72 :: AlgReal
+cos72 = sin18
+tan72 :: AlgReal
+tan72 = sin72 / cos72
+
 sin90 :: AlgReal
 sin90 = 1
 cos90 :: AlgReal
 cos90 = 0
+
+sin108 :: AlgReal
+sin108 = sin72
+cos108 :: AlgReal
+cos108 = -1 * cos72
+tan108 :: AlgReal
+tan108 = sin108 / cos108
 
 sin120 :: AlgReal
 sin120 = sin60
@@ -85,12 +99,40 @@ cos120 = -1 * cos60
 tan120 :: AlgReal
 tan120 = sin120 / cos120
 
+sin135 :: AlgReal
+sin135 = sin45
+cos135 :: AlgReal
+cos135 = -1 * cos45
+tan135 :: AlgReal
+tan135 = sin135 / cos135
+
+sin144 :: AlgReal
+sin144 = sin36
+cos144 :: AlgReal
+cos144 = -1 * cos36
+tan144 :: AlgReal
+tan144 = sin144 / cos144
+
 sin180 :: AlgReal
 sin180 = 0
 cos180 :: AlgReal
 cos180 = -1
 tan180 :: AlgReal
 tan180 = 0
+
+sin216 :: AlgReal
+sin216 = -1 * sin36
+cos216 :: AlgReal
+cos216 = -1 * cos36
+tan216 :: AlgReal
+tan216 = sin216 / cos216
+
+sin225 :: AlgReal
+sin225 = -1 * sin45
+cos225 :: AlgReal
+cos225 = -1 * cos45
+tan225 :: AlgReal
+tan225 = sin225 / cos225
 
 sin240 :: AlgReal
 sin240 = -1 * sin120
@@ -99,7 +141,42 @@ cos240 = cos120
 tan240 :: AlgReal
 tan240 = sin240 / cos240
 
+sin252 :: AlgReal
+sin252 = -1 * sin72
+cos252 :: AlgReal
+cos252 = -1 * cos72
+tan252 :: AlgReal
+tan252 = sin252 / cos252
+
 sin270 :: AlgReal
 sin270 = -1
 cos270 :: AlgReal
 cos270 = 0
+
+sin288 :: AlgReal
+sin288 = -1 * sin72
+cos288 :: AlgReal
+cos288 = cos72
+tan288 :: AlgReal
+tan288 = sin288 / cos288
+
+sin300 :: AlgReal
+sin300 = -1 * sin60
+cos300 :: AlgReal
+cos300 = cos60
+tan300 :: AlgReal
+tan300 = sin300 / cos300
+
+sin315 :: AlgReal
+sin315 = -1 * sin45
+cos315 :: AlgReal
+cos315 = cos45
+tan315 :: AlgReal
+tan315 = sin315 / cos315
+
+sin324 :: AlgReal
+sin324 = -1 * sin36
+cos324 :: AlgReal
+cos324 = cos36
+tan324 :: AlgReal
+tan324 = sin324 / cos324
