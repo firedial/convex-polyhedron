@@ -99,4 +99,5 @@ main :: IO ()
 -- main = print $ pfaces r1
 
 main = do
-    mapM_ (\x -> if isConvexPolyhedron x then BL.putStrLn $ encode $ toOutPutData x else error "not convex") $ getPolyhedrons
+    -- mapM_ (\x -> if isConvexPolyhedron x then BL.putStrLn $ encode $ toOutPutData x else error "not convex") $ getPolyhedrons
+    mapM_ (\x -> if isConvexPolyhedron x then putStrLn "OK" else error "not convex") $ getPolyhedrons
