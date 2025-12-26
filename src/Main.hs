@@ -58,6 +58,7 @@ data OutputData = OutputData
     , f :: Int
     , area :: [Int]
     , volume :: [Int]
+    , appxVertexes :: [[Double]]
     , appxD2 :: Double
     , appxArea :: Double
     , appxVolume :: Double
@@ -78,6 +79,7 @@ toOutPutData p = outputData
             (length $ rowFace p) -- f
             (toSave area) -- area
             (toSave volume) -- volume
+            (map (\point -> [toValue $ x point, toValue $ y point, toValue $ z point]) $ ppoints p) -- appxVertexes
             (toValue d2) -- appxD2
             (toValue area) -- appxArea
             (toValue volume) -- appxVolume
